@@ -10,96 +10,99 @@ const AboutMe = () => {
   ];
 
   const personalInfoRight = [
-    { label: "Address", value: "15/7 Pa Sang, Wiang Chiang Rung, Chiang Rai, 57350" },
+    { label: "Address", value: "15/7 Pa Sang, Wiang Chiang Rung, Chiang Rai" },
     { label: "Call Me", value: "093-243-1253" },
     { label: "Email", value: "pan.godchagorn2548@gmail.com" },
   ];
 
   return (
-    <section>
-      <div className="relative bg-softGray py-12 md:py-32">
-        {/* Background SVG - ปรับให้จางลงหรือไม่บังเนื้อหาบนมือถือ */}
-        <div className="absolute top-0 w-full px-4 md:px-9 opacity-40 md:opacity-100">
+    <section id="about">
+      <div className="relative bg-softGray py-16 md:py-32 overflow-hidden">
+        {/* Background Decorative SVG */}
+        <div className="absolute top-0 left-0 w-full opacity-20 pointer-events-none">
           <Image
             src={getImgPath("/images/home/about-me/svg/resume-bg-img.svg")}
-            alt="resume-bg-img"
+            alt="background-decoration"
             width={1200}
             height={348}
-            className="w-full h-auto"
+            className="w-full h-auto object-cover"
           />
         </div>
 
-        <div className="relative z-10">
-          <div className="container mx-auto px-4">
-            {/* Section Header */}
-            <div className="flex items-center justify-between gap-2 border-b border-black pb-7 mb-10 md:mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-black uppercase">About Me</h2>
-              <p className="text-lg md:text-xl text-primary font-bold">( 01 )</p>
+        <div className="relative z-10 container mx-auto px-6 md:px-12 lg:max-w-6xl">
+          {/* Section Header */}
+          <div className="flex items-end justify-between border-b-2 border-black pb-6 mb-12 md:mb-20">
+            <div>
+              <p className="text-primary font-bold tracking-[0.2em] mb-2 uppercase text-sm md:text-base">Get to know me</p>
+              <h2 className="text-4xl md:text-6xl font-black text-black uppercase leading-none">About Me</h2>
+            </div>
+            <p className="hidden md:block text-2xl text-gray-300 font-black italic">/ 01</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            {/* Left Column: Personal Information */}
+            <div className="lg:col-span-5">
+              <h3 className="text-xl md:text-2xl font-bold text-black uppercase mb-8 flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-primary inline-block"></span>
+                Personal Details
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-y-8">
+                <ul className="space-y-6">
+                  {personalInfoLeft.map((item, idx) => (
+                    <li key={idx} className="group">
+                      <p className="text-xs text-primary font-bold uppercase tracking-widest mb-1 group-hover:translate-x-1 transition-transform">
+                        {item.label}
+                      </p>
+                      <p className="text-lg text-black font-semibold">{item.value}</p>
+                    </li>
+                  ))}
+                </ul>
+                <ul className="space-y-6">
+                  {personalInfoRight.map((item, idx) => (
+                    <li key={idx} className="group">
+                      <p className="text-xs text-primary font-bold uppercase tracking-widest mb-1 group-hover:translate-x-1 transition-transform">
+                        {item.label}
+                      </p>
+                      <p className="text-lg text-black font-semibold">{item.value}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 items-center lg:items-start">
-              
-              {/* Profile Image Area - ปรับให้โชว์บนมือถือด้วยแต่อยู่ตรงกลาง */}
-              <div className="w-full max-w-[303px] aspect-[303/440] shrink-0">
-                <Image
-                  src={getImgPath("/images/home/about-me/me picture.jpg")}
-                  alt="Godchagorn Kitima"
-                  width={303}
-                  height={440}
-                  className="w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white"
-                />
-              </div>
-
-              {/* Details Area */}
-              <div className="w-full flex-1 text-center lg:text-left">
-                <h3 className="mb-8 text-2xl md:text-3xl font-bold text-black uppercase tracking-wider underline decoration-primary decoration-4 underline-offset-8">
-                  Personal Details
+            {/* Right Column: Professional Bio & Vision */}
+            <div className="lg:col-span-7 flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-black uppercase mb-8 flex items-center gap-3">
+                  <span className="w-8 h-[2px] bg-primary inline-block"></span>
+                  Professional Profile
                 </h3>
                 
-                {/* Personal Info Grid - ปรับเป็น 1 คอลัมน์บนมือถือ */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-10 pb-10 border-b border-mistGray text-left">
-                  <ul className="space-y-4">
-                    {personalInfoLeft.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <span className="text-primary font-bold text-xl">▸</span>
-                        <span className="text-base md:text-lg text-gray-700">
-                          <strong className="text-black font-semibold">{item.label}:</strong> {item.value}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <ul className="space-y-4">
-                    {personalInfoRight.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <span className="text-primary font-bold text-xl">▸</span>
-                        <span className="text-base md:text-lg text-gray-700">
-                          <strong className="text-black font-semibold">{item.label}:</strong> {item.value}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Professional Profile Section */}
-                <div className="pt-10">
-                  <h4 className="text-xl md:text-2xl font-bold text-black mb-5 uppercase tracking-tight">
-                    Professional Profile
-                  </h4>
-                  <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
-                    I am a <span className="text-black font-bold">Digital Industry Integration student at Chiang Mai University</span> with a passion for bridging the gap between user needs and technical solutions. 
-                    I specialize in <span className="text-primary font-bold">UX/UI Design, Business Analysis, and System Analysis.</span>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-6 font-light">
+                    I am a <span className="text-black font-bold border-b-4 border-primary/30">Digital Industry Integration student</span> at Chiang Mai University.
                   </p>
-                  
-                  {/* Quote / Vision */}
-                  <div className="bg-white/50 p-6 rounded-r-xl border-l-4 border-primary shadow-sm inline-block w-full">
-                    <p className="text-base md:text-lg text-black italic font-medium leading-snug">
-                      "Driven by curiosity and a commitment to creating user-centric digital experiences that solve real-world problems."
-                    </p>
-                  </div>
+                  <p className="text-lg text-gray-600 leading-relaxed mb-10">
+                    I am deeply passionate about bridging the gap between <span className="text-black font-medium italic">User Needs</span> and <span className="text-black font-medium italic">Technical Solutions</span>. 
+                    I specialize in analyzing complex business requirements and translating them into intuitive, user-centric digital experiences through 
+                    <strong className="text-primary font-bold"> UX/UI Design and System Analysis</strong>.
+                  </p>
                 </div>
-                
+              </div>
+
+              {/* Quote Area */}
+              <div className="mt-6">
+                <blockquote className="bg-white p-8 md:p-10 rounded-2xl shadow-xl shadow-black/5 border-l-8 border-primary relative">
+                  <span className="absolute top-4 left-4 text-6xl text-primary/10 font-serif leading-none">“</span>
+                  <p className="text-lg md:text-xl text-black italic font-medium relative z-10 leading-relaxed">
+                    Driven by curiosity and a commitment to creating user-centric digital experiences that solve real-world problems.
+                  </p>
+                </blockquote>
               </div>
             </div>
+
           </div>
         </div>
       </div>
